@@ -197,7 +197,7 @@ class GridView:
             #     'headerText': '',
             #     'template': f"<div id=\"row_action_{column['name']}\"></div>",
             #     'textAlign': 'Left',
-            #     'customAttributes': {'class': 'align-top'},
+            #     'customAttributes': column.get('customAttributes', {}),
             #     'width': column.get('width', None) or GRID_DEFAULT_COLUMN_WIDTH,
             # }
             # self.row_actions[f"row_action_{column['name']}"] = column['row_action']
@@ -208,7 +208,7 @@ class GridView:
                         'headerText': '',
                         'template': '<div class="a-grid-spacer"></div>',
                         'textAlign': 'Left',
-                        'customAttributes': {'class': 'align-top'},
+                        'customAttributes': column.get('customAttributes', {}),
                         'width': column.get('width', None) or GRID_DEFAULT_COLUMN_WIDTH,
                     }
                 else:
@@ -217,7 +217,7 @@ class GridView:
                         if col_attr.field_type == dmtypes.FieldTypes.OBJECT and col_attr.schema:
                             col_attr = col_attr.schema[column['name'].split('.')[1]]
                             # print('object', column['name'], col_attr)
-                    # print(column)
+                    print('column = ', column)
                     grid_column = {
                         # 'field': column['name'].split('.')[0] if '.' in column['name'] else column['name'],
                         'field': column['name'].replace('.', '__'),
@@ -226,7 +226,7 @@ class GridView:
                         'format': column.get('format', None) or col_attr.field_type.GridFormat,
                         'displayAsCheckBox': col_attr.field_type == dmtypes.FieldTypes.BOOLEAN,
                         'textAlign': 'Left',
-                        'customAttributes': {'class': 'align-top'},
+                        'customAttributes': column.get('customAttributes', {}),
                         'width': column.get('width', None) or GRID_DEFAULT_COLUMN_WIDTH,
                         'visible': column.get('visible', True),
                         # 'valueAccessor': self.format_value,
