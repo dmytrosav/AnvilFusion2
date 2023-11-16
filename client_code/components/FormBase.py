@@ -44,7 +44,7 @@ class FormBase:
                  source=None,
                  width=POPUP_WIDTH_COL1,
                  height='auto',
-                 validation=None,
+                 validation=None
                  ):
         print('Base Form', model)
 

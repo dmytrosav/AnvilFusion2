@@ -393,6 +393,8 @@ class GridView:
             pass
         elif args.item.id == 'delete' and self.grid.getSelectedRecords():
             self.confirm_delete(args)
+        elif args.item.id == 'print':
+            self.grid.print()
 
     def context_menu_click(self, args):
         print('context_menu_click', args)
